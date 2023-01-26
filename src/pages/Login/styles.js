@@ -50,7 +50,11 @@ export const Button = styled.button`
     font-weight: 700;
     font-size: 20px;
     margin-bottom: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
+    
     &:hover{
         opacity: 0.8;
     }
