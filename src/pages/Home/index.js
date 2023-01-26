@@ -33,7 +33,7 @@ export default () => {
       <HeaderMenu compras={compras} carrinho={carrinho} setCarrinho={setCarrinho}/>
       <Carrinho compras={compras} carrinho={carrinho} setCarrinho={setCarrinho} atualizaCompras={atualizaCompras}/>
       <CardsContainer>
-        {products.map(item => <CardProduto nome={item.nome} imagem={item.url_imagem} valor={item.valor} desconto={item.valor_com_desconto}/>)}
+        {products.map(item => <CardProduto id={item._id} nome={item.name} imagem={item.url} valor={item.value} desconto={item.valor_com_desconto}/>)}
       </CardsContainer>
     </Container>
   )
