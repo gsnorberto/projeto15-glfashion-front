@@ -1,33 +1,38 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import CardProduto from '../../components/CardProduto/index.js';
-import HeaderMenu from '../../components/HeaderMenu/index.js';
-import { CardsContainer, Container } from './styles.js';
+import { useState, useEffect } from "react"
+import axios from 'axios'
+import CardProduto from "../../components/CardProduto/index.js"
+import HeaderMenu from "../../components/HeaderMenu/index.js"
+import Carrinho from "../../components/Carrinho/index.js"
+import { CardsContainer, Container } from "./styles.js"
 
 export default () => {
 	const [products, setProducts] = useState([]);
+  const [carrinho, setCarrinho] = useState(false)
+  const [compras, setCompras] = useState([])
 
 	useEffect(() => {
 		const URL = `${process.env.REACT_APP_API_URL}/all-products`;
 		const promise = axios.get(URL);
 		promise.then(res => setProducts(res.data));
-        promise.catch(err => console.log(err.response.data))
-	}, []);
+    promise.catch(err => console.log(err.response.data))
+    
+    const requisicao = axios.get(`${process.env.REACT_APP_API_URL}/purchases`);
+    requisicao.then((res) => setCompras(res.data));
+    requisicao.catch((res) => alert(res.response.data));  
+	}, [setCompras]);
 
-	return (
-		<Container>
-			<HeaderMenu />
-			<CardsContainer>
-				{products.map((item) => (
-					<CardProduto
-						id={item._id}
-						nome={item.nome}
-						imagem={item.url_imagem}
-						valor={item.valor}
-						desconto={item.valor_com_desconto}
-					/>
-				))}
-			</CardsContainer>
-		</Container>
-	);
+	function atualizaCompras(){
+    const requisicao = axios.get(`${process.env.REACT_APP_API_URL}/purchases`);
+    requisicao.then((res) => setCompras(res.data));
+    requisicao.catch((res) => alert(res.response.data));
+  }
+  return (
+    <Container>
+      <HeaderMenu compras={compras} carrinho={carrinho} setCarrinho={setCarrinho}/>
+      <Carrinho compras={compras} carrinho={carrinho} setCarrinho={setCarrinho} atualizaCompras={atualizaCompras}/>
+      <CardsContainer>
+        {products.map(item => <CardProduto nome={item.nome} imagem={item.url_imagem} valor={item.valor} desconto={item.valor_com_desconto}/>)}
+      </CardsContainer>
+    </Container>
+  )
 };

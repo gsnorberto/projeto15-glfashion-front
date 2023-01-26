@@ -1,15 +1,15 @@
 import { HeaderContainer } from "./styles"
-import {AiOutlineShoppingCart} from "react-icons/ai"
-import {FaGripLines} from "react-icons/fa"
+import { AiOutlineShoppingCart } from "react-icons/ai"
+import { FaGripLines } from "react-icons/fa"
 
-export default () => {
+export default ({ compras, carrinho, setCarrinho }) => {
   return (
     <HeaderContainer>
       <FaGripLines />
       <h1>GLFashion</h1>
-      <div>
+      <div onClick={() => setCarrinho(!carrinho)}>
         <AiOutlineShoppingCart />
-        <p>0</p>
+        <p>{compras.length}</p>
       </div>
     </HeaderContainer>
   )
