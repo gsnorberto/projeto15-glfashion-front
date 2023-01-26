@@ -1,23 +1,33 @@
-import CardProduto from "../../components/CardProduto/index.js"
-import HeaderMenu from "../../components/HeaderMenu/index.js"
-import { CardsContainer, Container } from "./styles.js"
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+import CardProduto from '../../components/CardProduto/index.js';
+import HeaderMenu from '../../components/HeaderMenu/index.js';
+import { CardsContainer, Container } from './styles.js';
 
 export default () => {
-    const PRODUTOS = [
-        {
-            nome: "Camiseta slim fit para treino",
-            url_imagem: "https://www.calitta.com/3429-large_default/camiseta-slim-fit-treino-fitness-academia-masculina-esportiva.jpg",
-            valor: "150,00",
-            valor_com_desconto: "97,50"
-        }
-    ]
+	const [products, setProducts] = useState([]);
 
-    return (
-        <Container>
-            <HeaderMenu />
-            <CardsContainer>
-                {PRODUTOS.map(item => <CardProduto nome={item.nome} imagem={item.url_imagem} valor={item.valor} desconto={item.valor_com_desconto}/>)}
-            </CardsContainer>
-        </Container>
-    )
-}
+	useEffect(() => {
+		const URL = `${process.env.REACT_APP_API_URL}/all-products`;
+		const promise = axios.get(URL);
+		promise.then(res => setProducts(res.data));
+        promise.catch(err => console.log(err.response.data))
+	}, []);
+
+	return (
+		<Container>
+			<HeaderMenu />
+			<CardsContainer>
+				{products.map((item) => (
+					<CardProduto
+						id={item._id}
+						nome={item.nome}
+						imagem={item.url_imagem}
+						valor={item.valor}
+						desconto={item.valor_com_desconto}
+					/>
+				))}
+			</CardsContainer>
+		</Container>
+	);
+};

@@ -5,7 +5,6 @@ export const CardContainer = styled.div`
   height: 350px;
   display: flex;
   flex-direction: column;
-  font-family: Arial, Helvetica, sans-serif;
   gap: 10px;
   img {
     width: 250px;
