@@ -1,8 +1,10 @@
 import { CardContainer } from "./styles"
+import { useNavigate } from "react-router-dom"
 
-export default ({nome, imagem, valor, desconto}) => {
+export default ({id, nome, imagem, valor, desconto}) => {
+  const navigate = useNavigate()
   return (
-    <CardContainer>
+    <CardContainer onClick={() => navigate(`/produto/${id}`)}>
       <img src={imagem} alt={nome}/>
       <h1>{nome}</h1>
       <div>
