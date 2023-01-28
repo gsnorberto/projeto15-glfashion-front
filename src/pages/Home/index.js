@@ -2,13 +2,11 @@ import { useState, useEffect, useContext } from "react"
 import axios from 'axios'
 import CardProduto from "../../components/CardProduto/index.js"
 import HeaderMenu from "../../components/HeaderMenu/index.js"
-import Carrinho from "../../components/Carrinho/index.js"
 import { CardsContainer, Container } from "./styles.js"
 import { Context } from "../../context/AuthContext"
 
 export default () => {
-	const [products, setProducts] = useState([]);
-  const [carrinho, setCarrinho] = useState(false)
+	const [products, setProducts] = useState([])
   const [compras, setCompras] = useState([])
   let { userLS } = useContext(Context)
 
@@ -16,12 +14,8 @@ export default () => {
 		const URL = `${process.env.REACT_APP_API_URL}/all-products`;
 		const promise = axios.get(URL);
 		promise.then(res => setProducts(res.data));
-    promise.catch(err => console.log(err.response.data))
-
-    const requisicao = axios.get(`${process.env.REACT_APP_API_URL}/purchases/${userLS.id}`);
-    requisicao.then((res) => setCompras(res.data));
-    requisicao.catch((res) => alert(res.response.data));  
-	}, [setCompras]);
+    promise.catch(err => console.log(err.response.data)) 
+	}, [setProducts]);
 
 	function atualizaCompras(){
     const requisicao = axios.get(`${process.env.REACT_APP_API_URL}/purchases/${userLS.id}`);
@@ -30,8 +24,7 @@ export default () => {
   }
   return (
     <Container>
-      <HeaderMenu compras={compras} carrinho={carrinho} setCarrinho={setCarrinho}/>
-      <Carrinho compras={compras} carrinho={carrinho} setCarrinho={setCarrinho} atualizaCompras={atualizaCompras}/>
+      <HeaderMenu compras={compras} atualizaCompras={atualizaCompras} setCompras={setCompras}/>
       <CardsContainer>
         {products.map(item => <CardProduto id={item._id} nome={item.name} imagem={item.url} valor={item.value} desconto={item.valor_com_desconto}/>)}
       </CardsContainer>

@@ -16,7 +16,6 @@ export default ({compra, atualizaCompras}) => {
         requisicao.catch((res) => alert(res.response.data))
     }
     function deleta(){
-        console.log(compra._id)
         const requisicao = axios.delete(`${process.env.REACT_APP_API_URL}/purchases`, { data: { idPurchase: compra._id } } );
         requisicao.then(() => atualizaCompras())
         requisicao.catch((res) => alert(res.response.data))

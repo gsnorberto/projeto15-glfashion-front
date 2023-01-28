@@ -24,7 +24,7 @@ export default () => {
         let data = { email, password }
         axios.post(process.env.REACT_APP_API_URL + "/auth/login", data)
             .then((res) => {
-                let userData = { token: res.data.token, id: res.data._id, name: res.data.name }
+                let userData = { token: res.data.token, id: res.data._id, name: res.data.name, email: res.data.email }
                 addLocalStorage(userData)
                 setUserLS(userData)
                 setLoading(false)
