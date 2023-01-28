@@ -1,27 +1,27 @@
 import { Container, Informations, ProductContainer } from "./styles"
-import HeaderMenu from '../../components/HeaderMenu/index.js';
-import { useContext, useEffect, useState } from "react";
+import HeaderMenu from '../../components/HeaderMenu/index.js'
+import { useContext, useEffect, useState } from "react"
 import {BiMinus, BiPlus} from "react-icons/bi"
-import { useNavigate, useParams } from "react-router-dom";
-import axios from "axios";
-import { Context } from "../../context/AuthContext";
-
+import { useParams } from "react-router-dom"
+import axios from "axios"
+import { Context } from "../../context/AuthContext"
 
 export default () => {
-    const navigate = useNavigate()
     const [product, setProduct] = useState({})
     const [size, setSize] = useState('')
     const [quantity, setQuantity] = useState(1)
     const {ID_DO_PRODUTO} = useParams()
-    let { userLS } = useContext(Context)
+    const { userLS } = useContext(Context)
+    const [compras, setCompras] = useState([])
 
     useEffect(() => {
         const URL = `${process.env.REACT_APP_API_URL}/product/${ID_DO_PRODUTO}`
         const promise = axios.get(URL)
         promise.then(res => setProduct(res.data))
         promise.catch(err => alert(err.response.data))
-    }, [])
 
+    }, [ ID_DO_PRODUTO, userLS.id])
+ 
     function addInCart() {
         const URL = `${process.env.REACT_APP_API_URL}/purchases`
         const body = {
@@ -35,13 +35,17 @@ export default () => {
         if (size !== "PP" && size !== "P" && size !== "M" && size !== "G" && size !== "GG") return alert('Escolha um tamanho')
 
         const promise = axios.post(URL, body)
-        promise.then(() => navigate('/home'))
+        promise.then(() => atualizaCompras())
         promise.catch(err => alert(err.response.data))
     }
-
+    function atualizaCompras(){
+        const requisicao = axios.get(`${process.env.REACT_APP_API_URL}/purchases/${userLS.id}`);
+        requisicao.then((res) => setCompras(res.data));
+        requisicao.catch((res) => alert(res.response.data));
+      }
     return (
         <Container>
-            <HeaderMenu />
+            <HeaderMenu compras={compras} atualizaCompras={atualizaCompras} setCompras={setCompras}/>
             <ProductContainer>
                 <img src={product.url} alt={product.name}/>
                 <Informations>
