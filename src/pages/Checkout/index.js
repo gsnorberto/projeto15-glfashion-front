@@ -11,9 +11,8 @@ export default () => {
     let { userLS } = useContext(Context)
     const [clicado, setClicado] = useState(false)
     const [compras, setCompras] = useState([])
-    const pedidos = []
     const [selecionado, setSelecionado] = useState([ false, false, false])
-    const [dadosCompra, setDadosCompra] = useState({pedidos, pagamento: "", idUsuario: userLS.id, email: userLS.email, name: userLS.name, cpf: "", address: "" });
+    const [dadosCompra, setDadosCompra] = useState({pedidos: [], pagamento: "", idUsuario: userLS.id, email: userLS.email, name: userLS.name, cpf: "", address: "" });
     useEffect(() => {
         const requisicao = axios.get(`${process.env.REACT_APP_API_URL}/purchases/${userLS.id}`);
         requisicao.then((res) => setCompras(res.data));
@@ -51,8 +50,9 @@ export default () => {
     for(let i = 0; i < compras.length; i++) subtotal += compras[i].totalValue
     subtotal = subtotal.toFixed(2).split(".").join(",")
     
+    let pedidos = []
     for(let i = 0; i < compras.length; i++) pedidos.push({idProduct: compras[i].idProduct, size: compras[i].size, quantity: compras[i].quantity})
-    
+    dadosCompra.pedidos = pedidos
     return (
         <ContainerChecout>
             <HeaderContainer>
