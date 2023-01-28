@@ -9,6 +9,7 @@ export const Container = styled.div`
 export const CardsContainer = styled.div`
   width: 95%;
   display: flex;
+  justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
   margin-top: 250px;

@@ -2,12 +2,15 @@ import styled from "styled-components";
 
 export const CardContainer = styled.div`
   width: 250px;
-  height: 350px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  margin-bottom: 20px;
+
   img {
     width: 250px;
+    border-radius: 8px;
   }
   h1 {
     color: #767676;
