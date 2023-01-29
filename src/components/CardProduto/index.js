@@ -8,8 +8,8 @@ export default ({id, nome, imagem, valor, desconto}) => {
       <img src={imagem} alt={nome}/>
       <h1>{nome}</h1>
       <div>
-        <p>R${desconto}</p>
-        <p>R${valor}</p>
+        {/* <p>R${desconto}</p> */}
+        <p>R$ {valor.replace(".", ",")}</p>
       </div>
       <h4>Envio nacional</h4>
     </CardContainer>

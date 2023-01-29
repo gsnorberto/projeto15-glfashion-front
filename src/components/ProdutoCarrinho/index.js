@@ -32,7 +32,7 @@ export default ({compra, atualizaCompras}) => {
             </div>
             <Valor>
                 <span>R${compra.totalValue.toFixed(2).split(".").join(",")}</span>
-                <TiDeleteOutline onClick={deleta}/>
+                <TiDeleteOutline className="delete-button" onClick={deleta}/>
             </Valor>
         </Produto>
     )

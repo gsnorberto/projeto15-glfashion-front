@@ -1,6 +1,6 @@
 import { LoginArea, Logo, Form, Input, Button, Link } from "./styles"
-import { NavLink, useNavigate  } from "react-router-dom"
-import { useState, useContext } from "react"
+import { NavLink, useNavigate } from "react-router-dom"
+import { useState, useContext, useEffect } from "react"
 import { Context } from "../../context/AuthContext"
 import { addLocalStorage } from "../../localStorage"
 import { ThreeDots } from "react-loader-spinner";
@@ -10,13 +10,19 @@ export default () => {
     let navigate = useNavigate()
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
-    let { setUserLS } = useContext(Context)
+    let { userLS, setUserLS } = useContext(Context)
     const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        if (userLS) {
+            navigate("/home")
+        }
+    }, [])
 
     const Login = (e) => {
         e.preventDefault()
         setLoading(true)
-        
+
         if (!email || !password) {
             return
         }
@@ -56,7 +62,7 @@ export default () => {
                     onChange={e => setPassword(e.target.value)}
                 />
                 <Button data-test="sign-in-submit" type="submit">
-                <ThreeDots
+                    <ThreeDots
                         height="30"
                         width="40"
                         radius="9"

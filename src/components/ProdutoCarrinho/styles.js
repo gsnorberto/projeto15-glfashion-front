@@ -5,6 +5,7 @@ export const Produto = styled.div`
     height: 100px;
     display: flex;
     margin: 5px 0px;
+    margin-bottom: 30px;
     justify-content: space-between;
     img{
         width: 70px;
@@ -23,6 +24,10 @@ export const Valor = styled.div`
     padding: 10px;
     justify-content: space-between;
     align-items: flex-end;
+
+    .delete-button{
+        cursor: pointer;
+    }
 `
 
 export const Nome = styled.div`
@@ -32,7 +37,7 @@ export const Nome = styled.div`
     color: #000000;
     padding: 5px 10px;
     justify-content: space-between;
-    width: 150px;
+    max-width: 250px;
     span{
         font-weight: bold;
     }

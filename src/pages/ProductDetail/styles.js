@@ -4,6 +4,16 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  .back-button{
+    position: fixed;
+    width: 30px;
+    height: 30px;
+    left: 30px;
+    top: 150px;
+    color: #000000;
+    cursor: pointer;
+  }
 `
 
 export const ProductContainer = styled.div`

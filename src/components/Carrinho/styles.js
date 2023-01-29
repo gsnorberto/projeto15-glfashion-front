@@ -12,6 +12,7 @@ export const Fundo = styled.div`
 `
 
 export const CarrinhoContainer = styled.div`
+    font-family: 'Raleway', sans-serif;
     width: 40%;
     height: 100vh;
     background-color: #FFFFFF;
@@ -25,6 +26,13 @@ export const CarrinhoContainer = styled.div`
     p{
         align-self: center;
         color: #555555;
+    }
+
+    @media(max-width: 920px){
+        width: 60%;
+    }
+    @media(max-width: 620px){
+        width: 80%;
     }
 `
 
