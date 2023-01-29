@@ -7,13 +7,27 @@ export const Container = styled.div`
 `
 
 export const ProductContainer = styled.div`
-  width: 50%;
+  margin: 0 40px;
   display: flex;
   margin-top: 250px;
+  margin-bottom: 20px;
   gap: 20px;
+  
   img {
-    width: 450px;
-    height: 500px;
+    max-width: 400px;
+    //height: 500px;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+
+  @media(max-width: 820px){
+    flex-direction: column;
+  }
+  @media(max-width: 420px){
+    flex-direction: column;
+    img{
+      max-width: 300px;
+    }
   }
 `
 
@@ -22,6 +36,7 @@ export const Informations = styled.div`
   flex-direction: column;
   font-family: Arial, Helvetica, sans-serif;
   gap: 20px;
+  margin-right: 20px;
   h1 {
     font-size: 40px;
     font-weight: 700;
@@ -78,5 +93,11 @@ export const Informations = styled.div`
     color: #FFF;
     background-color: #292929;
     font-size: 17px;
+  }
+
+  @media(max-width: 820px){
+    h1{
+      font-size: 28px;
+    }
   }
 `

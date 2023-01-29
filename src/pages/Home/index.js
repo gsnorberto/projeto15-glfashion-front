@@ -26,7 +26,7 @@ export default () => {
     <Container>
       <HeaderMenu compras={compras} atualizaCompras={atualizaCompras} setCompras={setCompras}/>
       <CardsContainer>
-        {products.map(item => <CardProduto id={item._id} nome={item.name} imagem={item.url} valor={item.value} desconto={item.valor_com_desconto}/>)}
+        {products.map(item => <CardProduto key={item._id} id={item._id} nome={item.name} imagem={item.url} valor={item.value} desconto={item.valor_com_desconto}/>)}
       </CardsContainer>
     </Container>
   )
