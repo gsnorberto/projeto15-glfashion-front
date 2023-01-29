@@ -1,12 +1,13 @@
 import styled from "styled-components";
 
 export const CardContainer = styled.div`
+  font-family: 'Raleway', sans-serif;
   width: 250px;
   display: flex;
   flex-direction: column;
   gap: 10px;
-
   margin-bottom: 20px;
+  cursor: pointer;
 
   img {
     width: 250px;
@@ -22,7 +23,7 @@ export const CardContainer = styled.div`
     gap: 10px;
     p:nth-child(1) {
       font-size: 16px;
-      color: #FA6338;
+      color: #000000;
       font-weight: 700;
     }
     p:nth-child(2) {
