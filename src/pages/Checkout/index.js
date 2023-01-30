@@ -38,9 +38,14 @@ export default () => {
     function confirmarDados(event) {
         event.preventDefault();
         setClicado(true);
-        const requisicao = axios.post(`${process.env.REACT_APP_API_URL}/orders`, dadosCompra);
-        requisicao.then(() => { apagarCarrinho(); navigate("/sucesso"); });
-        requisicao.catch((res) => { alert(res.response.data); setClicado(false); });
+        if(compras.length === 0){
+            alert("Carrinho vazio!")
+            navigate("/home")
+        }else{
+            const requisicao = axios.post(`${process.env.REACT_APP_API_URL}/orders`, dadosCompra);
+            requisicao.then(() => { apagarCarrinho(); navigate("/sucesso"); });
+            requisicao.catch((res) => { alert(res.response.data); setClicado(false); });
+        }
     }
 
     function selecionar(b, p) {
@@ -79,7 +84,7 @@ export default () => {
                 <Pagamento>
                     <ButtonPix selecionado={selecionado[0]} onClick={() => selecionar(0, "Pix")}>Pix</ButtonPix>
                     <ButtonBoleto selecionado={selecionado[1]} onClick={() => selecionar(1, "Boleto")}>Boleto</ButtonBoleto>
-                    <ButtonCartao selecionado={selecionado[2]} onClick={() => selecionar(2, "Cartao")}>Cartão</ButtonCartao>
+                    <ButtonCartao selecionado={selecionado[2]} onClick={() => selecionar(2, "Cartão")}>Cartão</ButtonCartao>
                 </Pagamento>
 
             </DadosPedido>
