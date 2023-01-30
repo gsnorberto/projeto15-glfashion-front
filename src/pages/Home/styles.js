@@ -4,6 +4,17 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  img{
+    width: 100%;
+    margin-top: 70px;
+  }
+
+  .desc{
+    font-family: 'Raleway', sans-serif;
+    margin-top: 60px;
+    cursor: pointer;
+  }
 `
 
 export const CardsContainer = styled.div`
@@ -12,5 +23,4 @@ export const CardsContainer = styled.div`
   justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
-  margin-top: 250px;
 `
