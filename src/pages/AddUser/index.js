@@ -18,9 +18,11 @@ export default () => {
         setLoading(true)
 
         if (!name || !email || !password || !confirmPassword) {
+            setLoading(false)
             return alert("Preencha todos os campos! ")
         }
         if (password !== confirmPassword) {
+            setLoading(false)
             return alert("As senhas não conferem! ")
         }
 
@@ -69,7 +71,7 @@ export default () => {
                     value={confirmPassword}
                     onChange={e => setConfirmPassword(e.target.value)}
                 />
-                <Button data-test="sign-up-submit" type="submit">
+                <Button disabled={loading} data-test="sign-up-submit" type="submit">
                     <ThreeDots
                         height="30"
                         width="40"

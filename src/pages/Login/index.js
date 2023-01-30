@@ -24,6 +24,7 @@ export default () => {
         setLoading(true)
 
         if (!email || !password) {
+            setLoading(false)
             return
         }
 
@@ -61,7 +62,7 @@ export default () => {
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                 />
-                <Button data-test="sign-in-submit" type="submit">
+                <Button disabled={loading} data-test="sign-in-submit" type="submit">
                     <ThreeDots
                         height="30"
                         width="40"

@@ -6,6 +6,7 @@ import { CardsContainer, Container } from "./styles.js"
 import { Context } from "../../context/AuthContext"
 import { useNavigate } from "react-router-dom"
 import logo from "../../assets/img/logo.png"
+import Footer from "../../components/Footer/index.js"
 
 export default () => {
   let navigate = useNavigate()
@@ -42,6 +43,7 @@ export default () => {
       <CardsContainer>
         {products.map(item => <CardProduto key={item._id} id={item._id} nome={item.name} imagem={item.url} valor={item.value} desconto={item.valor_com_desconto} />)}
       </CardsContainer>
+      <Footer />
     </Container>
   )
 };
