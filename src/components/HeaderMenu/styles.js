@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const HeaderContainer = styled.div`
   width: 100%;
-  height: 120px;
-  background-color: #000000;
+  height: 70px;
+  background-color: #201e1b;
   display: flex;
   color: #FFFFFF;
   align-items: center;
@@ -26,7 +26,7 @@ export const HeaderContainer = styled.div`
 export const Logo = styled.div`
   font-family: 'Parisienne', cursive;
   color: #FFFFFF;
-  font-size: 28px;
+  font-size: 18px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,8 +34,8 @@ export const Logo = styled.div`
   cursor: pointer;
 
   .logo-1{
-      color: #A0445D;
-      font-size: 46px;
+      color: #897F78;
+      font-size: 26px;
   }
 `
 export const UserArea = styled.div`
@@ -47,7 +47,7 @@ export const Button = styled.button`
   margin-top: 5px;
   border: 0;
   border-radius: 5px;
-  background-color: #A0445D;
+  background-color: #897F78;
   color: #FFFFFF;
   cursor: pointer;
 

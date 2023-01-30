@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SignUpArea = styled.div`
     font-family: 'Raleway', sans-serif;
-    background-color: #000000;
+    background-color: #DDD4CD;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -20,7 +20,7 @@ export const Logo = styled.div`
     align-items: center;
 
     .logo-1{
-        color: #A0445D;
+        color: #897F78;
         font-size: 106px;
     }
 `
@@ -44,7 +44,7 @@ export const Button = styled.button`
     height: 46px;
     border: 0;
     border-radius: 5px;
-    background-color: #A0445D;
+    background-color: #897F78;
     color: #FFFFFF;
     width: 100%;
     font-weight: 700;
