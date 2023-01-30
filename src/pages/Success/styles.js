@@ -7,6 +7,7 @@ export const SuccessArea = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    padding: 0 20px;
 
     .check-icon{
         width: 120px;
@@ -22,6 +23,7 @@ export const SuccessArea = styled.div`
 export const Title = styled.div`
     font-size: 30px;
     font-weight: 700;
+    text-align: center;
 `
 
 export const Subtitle = styled.div`
