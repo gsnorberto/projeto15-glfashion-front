@@ -1,7 +1,5 @@
-
-
 export default () => {
     return (
-        <div></div>
+        <div>404: Not Found</div>
     )
 }

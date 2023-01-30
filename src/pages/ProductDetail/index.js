@@ -61,6 +61,7 @@ export default () => {
         <Container>
             <HeaderMenu compras={compras} atualizaCompras={atualizaCompras} setCompras={setCompras} />
             <NavLink to="/home"><IoArrowBackOutline className="back-button" /></NavLink>
+            <div className="nav">Moda Feminina {">"} Vestidos</div>
             <ProductContainer>
                 <img src={product.url} alt={product.name} />
                 <Informations>
