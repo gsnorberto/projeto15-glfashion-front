@@ -6,9 +6,10 @@ import { Context } from "../../context/AuthContext"
 import { useState, useEffect, useContext } from "react"
 import axios from "axios"
 import ProdutoCarrinho from "../../components/ProdutoCarrinho/index.js"
+import HeaderMenu from "../../components/HeaderMenu/index.js"
 export default () => {
     const navigate = useNavigate();
-    let { userLS } = useContext(Context)
+    let { userLS } = useContext(Context);
 
     useEffect(() => {
         if (!userLS) {
@@ -70,11 +71,7 @@ export default () => {
 
     return (
         <ContainerChecout>
-            <HeaderContainer>
-                <FaGripLines />
-                <h1>GLFashion</h1>
-                <AiFillHome onClick={() => navigate("/home")} />
-            </HeaderContainer>
+            <HeaderMenu compras={compras} atualizaCompras={atualizaCompras} setCompras={setCompras} />
             <DadosPedido>
                 <Produtos>{compras.map((c) => <ProdutoCarrinho key={c._id} compra={c} atualizaCompras={atualizaCompras} />)}</Produtos>
                 <SubTotal><span>Subtotal:</span><span>R${subtotal}</span></SubTotal>
