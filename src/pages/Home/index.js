@@ -38,7 +38,7 @@ export default () => {
   return (
     <Container>
       <HeaderMenu compras={compras} atualizaCompras={atualizaCompras} setCompras={setCompras} />
-      <img src={logo} />
+      <img className="logo" src={logo} />
       <div className="desc">Moda Feminina</div>
       <CardsContainer>
         {products.map(item => <CardProduto key={item._id} id={item._id} nome={item.name} imagem={item.url} valor={item.value} desconto={item.valor_com_desconto} />)}
