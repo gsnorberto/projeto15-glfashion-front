@@ -24,21 +24,20 @@ export const HeaderContainer = styled.div`
 export const ContainerChecout = styled.div`
     font-family: 'Raleway', sans-serif;
     width: 100%;
-    height: 100vh;
+    height: 100%;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    padding-top: 50px;
     padding-bottom: 30px;
-
+    padding-top: 150px;
     @media(max-width:1075px){
-      padding-top: 150px;
       flex-direction: column;
     }
 `
 export const DadosComprador = styled.form`
     width: 45%;
     height: 400px;
+    min-height: 400px;
     border: 1px solid #CCC;
     border-radius: 5px;
     display: flex;
@@ -55,6 +54,7 @@ export const DadosComprador = styled.form`
         border-radius: 5px;
         opacity: ${props => props.clicado ? "0.7" : "1"};
         cursor: pointer;
+        align-self: center;
     }
     input{
         width: 100%;
@@ -76,6 +76,7 @@ export const DadosComprador = styled.form`
 export const DadosPedido = styled.form`
     width: 50%;
     height: 400px;
+    min-height: 400px;
     border: 1px solid #CCC;
     border-radius: 5px;
     display: flex;

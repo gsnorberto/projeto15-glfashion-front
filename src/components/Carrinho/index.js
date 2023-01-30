@@ -19,7 +19,7 @@ export default ({compras, carrinho, setCarrinho, atualizaCompras}) => {
                 {compras.length === 0 ? <p>Sem produtos no carrinho</p> : <Produtos>{compras.map((c) => <ProdutoCarrinho key={c._id} compra={c} atualizaCompras={atualizaCompras}/>)}</Produtos>}
                 <Rodape>
                     <div><span>Subtotal:</span><span>R${subtotal}</span></div>
-                    <button onClick={() => navigate("/pagamento")}>Finalizar compra</button>
+                    <button disabled={compras.length === 0} onClick={() => navigate("/pagamento")}>Finalizar compra</button>
                 </Rodape>
             </CarrinhoContainer>
         </>   

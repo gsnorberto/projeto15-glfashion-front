@@ -47,7 +47,7 @@ export default () => {
                                         <div className="order-name">{p.name}</div>
                                         <div className="order-size">Tamanho: {p.size}</div>
                                         <div className="order-amount">Quantidade: {p.quantity}</div>
-                                        <div className="order-price">Valor: R${p.valor.toFixed(2).split(".").join(",")}</div>
+                                        <div className="order-price">Valor total: R${p.valor.toFixed(2).split(".").join(",")}</div>
                                         <div className="order-price">Método de pagamento: {pU.pagamento}</div>
                                     </div>
                                 </Order>
