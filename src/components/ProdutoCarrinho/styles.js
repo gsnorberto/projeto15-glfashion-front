@@ -12,6 +12,7 @@ export const Produto = styled.div`
         height: auto;
         background-size: cover;
         border-radius: 5px;
+        margin: 0;
     }
     div{
         display: flex;
