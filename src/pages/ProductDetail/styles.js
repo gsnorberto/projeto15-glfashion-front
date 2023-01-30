@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  font-family: 'Raleway', sans-serif;
   display: flex;
   flex-direction: column;
-  align-items: center;
-
+  align-items: flex-start;
+  margin-left: 35px;
+  margin-right: 35px;
+  
   .back-button{
-    position: fixed;
+    margin-top: 100px;
     width: 30px;
     height: 30px;
     left: 30px;
@@ -14,12 +17,14 @@ export const Container = styled.div`
     color: #000000;
     cursor: pointer;
   }
+  .nav{
+        margin-top: 25px;
+    }
 `
 
 export const ProductContainer = styled.div`
-  margin: 0 40px;
   display: flex;
-  margin-top: 250px;
+  margin-top: 25px;
   margin-bottom: 20px;
   gap: 20px;
   
