@@ -10,7 +10,7 @@ export default () => {
     let { userLS } = useContext(Context)
     const [compras, setCompras] = useState([])
     const [pedidosUsuario, setPedidosUsuario] = useState([])
-
+ 
     useEffect(() => {
         if (!userLS) {
             navigate("/")
