@@ -37,7 +37,7 @@ export default () => {
     function confirmarDados(event) {
         event.preventDefault();
         setClicado(true);
-        const requisicao = axios.post(`${process.env.REACT_APP_API_URL}/pagamento`, dadosCompra);
+        const requisicao = axios.post(`${process.env.REACT_APP_API_URL}/orders`, dadosCompra);
         requisicao.then(() => { apagarCarrinho(); navigate("/sucesso"); });
         requisicao.catch((res) => { alert(res.response.data); setClicado(false); });
     }
@@ -65,7 +65,7 @@ export default () => {
     subtotal = subtotal.toFixed(2).split(".").join(",")
 
     let pedidos = []
-    for (let i = 0; i < compras.length; i++) pedidos.push({ idProduct: compras[i].idProduct, size: compras[i].size, quantity: compras[i].quantity })
+    for (let i = 0; i < compras.length; i++) pedidos.push({ idProduct: compras[i].idProduct, size: compras[i].size, quantity: compras[i].quantity, valor: compras[i].totalValue, name: compras[i].name, url: compras[i].url})
     dadosCompra.pedidos = pedidos
 
     return (

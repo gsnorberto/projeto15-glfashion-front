@@ -9,11 +9,15 @@ export default () => {
     let navigate = useNavigate()
     let { userLS } = useContext(Context)
     const [compras, setCompras] = useState([])
+    const [pedidosUsuario, setPedidosUsuario] = useState([])
 
     useEffect(() => {
         if (!userLS) {
             navigate("/")
         }
+        const requisicao = axios.get(`${process.env.REACT_APP_API_URL}/orders/${userLS.id}`);
+        requisicao.then((res) => setPedidosUsuario(res.data));
+        requisicao.catch((res) => alert(res.response.data));
     }, [])
     if (!userLS) return
 
@@ -22,7 +26,7 @@ export default () => {
         requisicao.then((res) => setCompras(res.data));
         requisicao.catch((res) => alert(res.response.data));
     }
-
+    console.log(pedidosUsuario)
     return (
         <Container>
             <HeaderMenu compras={compras} atualizaCompras={atualizaCompras} setCompras={setCompras} />
@@ -30,26 +34,28 @@ export default () => {
             <div className="title">Pedidos</div>
             <div className="line"></div>
             <OrdersArea>
-                <Order>
-                    <img src="https://img.ltwebstatic.com/images3_pi/2021/05/04/16201072816d3f4eca6ca1ffb66aeb932799c237b7.webp" alt="" />
-                    <div className="content">
-                        <div className="order-name">Pedido teste</div>
-                        <div className="order-size">Tamanho: M</div>
-                        <div className="order-amount">Quantidade: 2</div>
-                        <div className="order-price">Valor: R$32.50</div>
-                        <div className="order-price">Método de pagamento: Cartão</div>
-                    </div>
-                </Order>
-                <Order>
-                    <img src="https://img.ltwebstatic.com/images3_pi/2021/05/04/16201072816d3f4eca6ca1ffb66aeb932799c237b7.webp" alt="" />
-                    <div className="content">
-                        <div className="order-name">Pedido teste</div>
-                        <div className="order-size">Tamanho: M</div>
-                        <div className="order-amount">Quantidade: 2</div>
-                        <div className="order-price">Valor: R$32.50</div>
-                        <div className="order-price">Método de pagamento: Cartão</div>
-                    </div>
-                </Order>
+                {pedidosUsuario.map((pU) => {
+                    let id = 0
+                    return(
+                        <div key={pU._id}>
+                        {pU.pedidos.map((p)=>{
+                            id++
+                            return(
+                                <Order key={id}>
+                                    <img src={p.url} alt={p.name} />
+                                    <div className="content">
+                                        <div className="order-name">{p.name}</div>
+                                        <div className="order-size">Tamanho: {p.size}</div>
+                                        <div className="order-amount">Quantidade: {p.quantity}</div>
+                                        <div className="order-price">Valor: R${p.valor.toFixed(2).split(".").join(",")}</div>
+                                        <div className="order-price">Método de pagamento: {pU.pagamento}</div>
+                                    </div>
+                                </Order>
+                            )
+                        })}
+                        </div>
+                    )
+                })}
             </OrdersArea>
         </Container>
     )
