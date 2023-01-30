@@ -32,11 +32,12 @@ export const Subtitle = styled.div`
 
 export const Button = styled.button`
     margin-top: 40px;
-    padding: 5px 10px;
+    padding: 15px 30px;
     border: 0;
-    background-color: #A0445D;
+    background-color: #201e1b;
     color: #FFFFFF;
     border-radius: 5px;
+    cursor: pointer;
     &:hover{
         opacity: 0.9;
     }

@@ -22,23 +22,30 @@ export const HeaderContainer = styled.div`
   }
 `
 export const ContainerChecout = styled.div`
+    font-family: 'Raleway', sans-serif;
     width: 100%;
     height: 100vh;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
     padding-top: 50px;
+    padding-bottom: 30px;
+
+    @media(max-width:1075px){
+      padding-top: 150px;
+      flex-direction: column;
+    }
 `
 export const DadosComprador = styled.form`
-    width: 500px;
+    width: 45%;
     height: 400px;
     border: 1px solid #CCC;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-evenly;
-    padding: 10px;
+    padding: 10px 40px;
     button{
         width: 250px;
         height: 40px;
@@ -47,9 +54,10 @@ export const DadosComprador = styled.form`
         color: #fff;
         border-radius: 5px;
         opacity: ${props => props.clicado ? "0.7" : "1"};
+        cursor: pointer;
     }
     input{
-        width: 250px;
+        width: 100%;
         height: 40px;
         border-radius: 5px;
         border: 1px solid #CCC;
@@ -57,23 +65,30 @@ export const DadosComprador = styled.form`
     }
     h1{
         align-self: flex-start;
-        margin-left: 115px;
+        
+    }
+    @media(max-width:1075px){
+      width: 95%;
+      margin-top: 15px;
     }
 `
 
 export const DadosPedido = styled.form`
-    width: 500px;
+    width: 50%;
     height: 400px;
     border: 1px solid #CCC;
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
     justify-content: space-evenly;
-    padding: 10px;
+    padding: 10px 30px;
     h1{
-      padding: 5px 0px 10px 50px;
       align-self: flex-start;
+    }
+
+    @media(max-width:1075px){
+      width: 95%;
     }
 `
 export const InputDesabilitado = styled.input`
@@ -90,7 +105,6 @@ export const Produtos = styled.div`
     height: 70%;
     overflow-y: scroll;
     width: 100%;
-    padding: 0 50px;
 `
 
 export const SubTotal = styled.div`
@@ -98,15 +112,13 @@ export const SubTotal = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 50px;
 `
 
 export const Pagamento = styled.div`
   display: flex;
   width: 100%;
   align-items: center;
-  justify-content: space-evenly;
-  padding: 0 70px;
+  justify-content: flex-start;
   div{
     width: 70px;
     height: 30px;
@@ -121,10 +133,15 @@ export const Pagamento = styled.div`
 `
 export const ButtonPix = styled.div`
   border: ${props => props.selecionado ? "2px solid #0f0": "none"};
+  margin-right: 5px;
+  cursor: pointer;
 `
 export const ButtonBoleto = styled.div`
   border: ${props => props.selecionado ? "2px solid #0f0": "none"};
+  margin-right: 5px;
+  cursor: pointer;
 `
 export const ButtonCartao = styled.div`
   border: ${props => props.selecionado ? "2px solid #0f0": "none"};
+  cursor: pointer;
 `

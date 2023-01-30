@@ -78,6 +78,7 @@ export const Rodape = styled.div`
         color: #FFFFFF;
         background-color: #000000;
         font-size: 17px;
+        cursor: pointer;
     }
 `
 export const Produtos = styled.div`
