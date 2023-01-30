@@ -9,6 +9,8 @@ export const Produto = styled.div`
     justify-content: space-between;
     img{
         width: 70px;
+        height: auto;
+        background-size: cover;
         border-radius: 5px;
     }
     div{
