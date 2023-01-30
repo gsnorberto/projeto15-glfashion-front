@@ -12,6 +12,7 @@ export default () => {
     const [password, setPassword] = useState('');
     let { userLS, setUserLS } = useContext(Context)
     const [loading, setLoading] = useState(false);
+    const [isWrong, setIsWrong] = useState(false)
 
     useEffect(() => {
         if (userLS) {
@@ -22,11 +23,7 @@ export default () => {
     const Login = (e) => {
         e.preventDefault()
         setLoading(true)
-
-        if (!email || !password) {
-            setLoading(false)
-            return
-        }
+        setIsWrong(false)
 
         let data = { email, password }
         axios.post(process.env.REACT_APP_API_URL + "/auth/login", data)
@@ -38,7 +35,7 @@ export default () => {
                 navigate("/home")
             }).catch((error) => {
                 setLoading(false)
-                alert("Error: " + error.response.data)
+                setIsWrong(true)
             })
     }
 
@@ -48,20 +45,26 @@ export default () => {
                 <div className="logo-1">GL</div>
                 <div>Fashion</div>
             </Logo>
-            <Form onSubmit={Login}>
+            <Form isWrong={isWrong} onSubmit={Login}>
                 <Input
+                    isWrong={isWrong}
                     data-test="email"
                     placeholder="E-mail"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
+                    required
                 />
+                <p>Email ou senha incorretos</p>
                 <Input
+                    isWrong={isWrong}
                     data-test="password"
                     type="password"
                     placeholder="Senha"
                     value={password}
                     onChange={e => setPassword(e.target.value)}
+                    required
                 />
+                <p>Email ou senha incorretos</p>
                 <Button disabled={loading} data-test="sign-in-submit" type="submit">
                     <ThreeDots
                         height="30"

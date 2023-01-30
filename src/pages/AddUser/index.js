@@ -11,19 +11,17 @@ export default () => {
     const [password, setPassword] = useState('')
     const [confirmPassword, setConfirmPassword] = useState('')
     const [loading, setLoading] = useState(false)
+    const [isWrong, setIsWrong] = useState(false)
 
     const addUser = (e) => {
         e.preventDefault()
         console.log(process.env.REACT_APP_API_URL);
         setLoading(true)
+        setIsWrong(false)
 
-        if (!name || !email || !password || !confirmPassword) {
-            setLoading(false)
-            return alert("Preencha todos os campos! ")
-        }
         if (password !== confirmPassword) {
             setLoading(false)
-            return alert("As senhas não conferem! ")
+            return setIsWrong(true)
         }
 
         let data = { name, email, password, confirmPassword }
@@ -43,12 +41,13 @@ export default () => {
                 <div className="logo-1">GL</div>
                 <div>Fashion</div>
             </Logo>
-            <Form onSubmit={addUser}>
+            <Form isWrong={isWrong} onSubmit={addUser}>
                 <Input
                     data-test="name"
                     placeholder="Nome"
                     value={name}
                     onChange={e => setName(e.target.value)}
+                    required
                 />
                 <Input
                     data-test="email"
@@ -56,21 +55,27 @@ export default () => {
                     type="email"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
+                    required
                 />
                 <Input
+                    isWrong={isWrong}
                     data-test="password"
                     placeholder="Senha"
                     type="password"
                     value={password}
                     onChange={e => setPassword(e.target.value)}
+                    required
                 />
                 <Input
+                    isWrong={isWrong}
                     data-test="conf-password"
                     placeholder="Confirme a Senha"
                     type="password"
                     value={confirmPassword}
                     onChange={e => setConfirmPassword(e.target.value)}
+                    required
                 />
+                <p>As senhas não conferem</p>
                 <Button disabled={loading} data-test="sign-up-submit" type="submit">
                     <ThreeDots
                         height="30"
