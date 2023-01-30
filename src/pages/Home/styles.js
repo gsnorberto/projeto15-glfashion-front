@@ -13,6 +13,7 @@ export const Container = styled.div`
   .desc{
     font-family: 'Raleway', sans-serif;
     margin-top: 60px;
+    margin-bottom: 30px;
     cursor: pointer;
   }
 `
