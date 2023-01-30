@@ -5,7 +5,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  img{
+  .logo{
     width: 100%;
     margin-top: 70px;
   }
